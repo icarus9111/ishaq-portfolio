@@ -461,6 +461,8 @@ $("#yr").textContent=new Date().getFullYear();
     ps.forEach(p=>{p.y-=p.v;p.x+=Math.sin(t+p.d)*.15;if(p.y<-5){p.y=h+5;p.x=Math.random()*w}x.beginPath();x.arc(p.x,p.y,p.r,0,6.283);x.fillStyle=`rgba(207,106,115,${p.a*(.6+.4*Math.sin(t*1.5+p.d))})`;x.fill()});requestAnimationFrame(loop)}
   new IntersectionObserver(e=>{on=e[0].isIntersecting;if(on&&!run)loop()}).observe(c);
 })();
+})();
 </script>
+<script src="three-layer.js" defer></script>
 </body>
 </html>
