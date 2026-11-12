@@ -1,1039 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ishaq Abdullah — AI Engineer &amp; Entrepreneur</title>
-<meta name="description" content="Muhammad Ishaq Abdullah: aspiring AI engineer and independent developer in Multan, Pakistan, building intelligent products, systems and ideas.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ishaq Abdullah — AI Engineer &amp; Entrepreneur">
-<meta property="og:description" content="Engineering intelligence. Building what comes next.">
-<!-- [EDIT] add og:url and og:image once the site is hosted -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ishaq Abdullah — AI Engineer &amp; Entrepreneur">
-<meta name="twitter:description" content="Engineering intelligence. Building what comes next.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Muhammad Ishaq Abdullah","alternateName":"Ishaq Abdullah","jobTitle":"AI Engineer & Entrepreneur","email":"mailto:ishaqueabdullah6@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Multan","addressCountry":"PK"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Bahauddin Zakariya University"},"sameAs":["https://www.linkedin.com/in/ishaq-abdullah-a07191308/","https://github.com/icarus9111"]}
-</script>
-<style>
-/* ============ DESIGN TOKENS ============ */
-:root{
-  --bg:#090B0D;--bg2:#111418;--card:#15191D;--text:#EAE8E2;--muted:#969A9D;
-  --accent:#A33B45;--accent-text:#CF6A73;--border:rgba(255,255,255,.09);
-  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
-  --nav-bg:rgba(9,11,13,.82);--shadow:0 20px 50px rgba(0,0,0,.35);--glow:rgba(163,59,69,.17);--glow2:rgba(163,59,69,.07);
-}
-:root[data-theme="light"]{
-  --bg:#EFEBE3;--bg2:#E6E1D7;--card:#F6F3EC;--text:#15171A;--muted:#575B5F;
-  --accent:#8E2F39;--accent-text:#8E2F39;--border:rgba(0,0,0,.14);--nav-bg:rgba(239,235,227,.85);--shadow:0 20px 40px rgba(60,40,30,.12);--glow:rgba(142,47,57,.13);--glow2:rgba(142,47,57,.05);
-}
-/* ============ BASE ============ */
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{background:var(--bg);color:var(--text);font:400 16px/1.7 var(--sans);overflow-x:hidden;transition:background .3s,color .3s;
-  background-image:radial-gradient(70% 50% at 100% 0%,var(--glow),transparent 70%),radial-gradient(50% 40% at 0% 65%,var(--glow2),transparent 70%);background-attachment:fixed}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--accent-text);outline-offset:3px}
-.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
-section{padding:clamp(72px,11vw,140px) 0;border-top:1px solid var(--border)}
-h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spacing:-.01em}
-h2{font-size:clamp(2.2rem,5vw,3.8rem);margin-bottom:40px}
-.mono{font-family:var(--mono);font-size:.76rem;color:var(--muted);letter-spacing:.04em}
-.lead{max-width:62ch;color:var(--muted)}
-.sr{position:absolute;left:-9999px}
-.btn{display:inline-block;padding:14px 26px;border:1px solid var(--border);text-decoration:none;font-size:.9rem;background:none;color:var(--text);cursor:pointer;font-family:var(--sans);transition:border-color .2s,background .2s}
-.btn:hover{border-color:var(--accent-text)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-.btn.primary:hover{background:#8a2f38}
-/* ============ 01 NAVIGATION ============ */
-header{position:sticky;top:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-header.scrolled{background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--border)}
-nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-size:.95rem}
-.mono-logo{font-family:var(--serif);font-size:1.15rem;border:1px solid var(--accent);width:36px;height:36px;display:grid;place-items:center}
-.links{display:flex;gap:28px;align-items:center;list-style:none}
-.links a{text-decoration:none;font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
-.links a:hover{color:var(--text)}
-.links a.active{color:var(--text);border-color:var(--accent-text)}
-.icon-btn{background:none;border:1px solid var(--border);color:var(--text);width:38px;height:38px;cursor:pointer;font-size:1rem}
-#menuBtn{display:none}
-@media(max-width:860px){
-  #menuBtn{display:block}
-  .links{position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:8px 24px;display:none}
-  .links.open{display:flex}.links li{width:100%}.links a{display:block;padding:14px 0}
-}
-/* ============ 02 HERO ============ */
-.hero{border-top:0;padding:clamp(40px,7vw,90px) 0 clamp(70px,9vw,120px);min-height:calc(100vh - 68px);display:flex;align-items:center}
-.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
-.hero h1{font-size:clamp(2.9rem,7vw,6rem);margin:20px 0 28px}
-.hero .name{font-family:var(--mono);font-size:.85rem;letter-spacing:.14em;margin-bottom:24px;color:var(--accent-text)}
-.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
-.sys{width:100%;height:auto;color:var(--muted)}
-.sys .ln{stroke:var(--border);stroke-width:1;fill:none}
-.sys .edge{stroke:var(--muted);stroke-width:1;fill:none;stroke-dasharray:300;stroke-dashoffset:300;animation:draw 2.4s .3s ease forwards}
-.sys .nd{fill:var(--bg);stroke:var(--muted);stroke-width:1}
-.sys .hot{fill:var(--accent);stroke:var(--accent)}
-.sys text{font-family:var(--mono);font-size:10px;fill:var(--muted)}
-@keyframes draw{to{stroke-dashoffset:0}}
-@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero{min-height:0}}
-/* ============ 03 ABOUT ============ */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:64px}
-.about p+p{margin-top:20px}
-.portrait{aspect-ratio:4/5;background:var(--card);border:1px solid var(--border);display:grid;place-items:center;text-align:center;padding:24px;margin-bottom:28px;overflow:hidden}
-.portrait img{width:100%;height:100%;object-fit:cover}
-dl.facts{display:grid;grid-template-columns:110px 1fr;gap:0}
-dl.facts dt,dl.facts dd{padding:12px 0;border-top:1px solid var(--border);font-size:.92rem}
-dl.facts dt{color:var(--muted)}
-@media(max-width:860px){.split{grid-template-columns:1fr;gap:40px}}
-/* ============ 04 EXPERTISE / 07 TOOLKIT ============ */
-ul.plain{list-style:none}
-ul.plain li{padding:13px 0;border-top:1px solid var(--border);font-family:var(--serif);font-size:1.4rem}
-ul.plain li:last-child{border-bottom:1px solid var(--border)}
-.col h3{font-size:1.6rem;margin-bottom:20px;color:var(--accent-text);font-style:italic}
-.chips{display:flex;flex-wrap:wrap;gap:10px}
-.chip{font-family:var(--mono);font-size:.8rem;padding:7px 14px;border:1px solid var(--border);color:var(--text)}
-.tk{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
-.tk h3{font-size:1.3rem;margin-bottom:16px}
-@media(max-width:860px){.tk{grid-template-columns:1fr;gap:32px}}
-/* ============ 05 VENTURES ============ */
-.venture{border:1px dashed var(--border);padding:40px;max-width:760px;background:var(--bg2)}
-.venture h3{font-size:2rem;margin-bottom:12px}
-/* ============ 06 PROJECTS ============ */
-.proj{display:grid;grid-template-columns:90px 1fr;gap:24px;padding:34px 0;border-top:1px solid var(--border);transition:padding-left .3s}
-.proj:hover{padding-left:12px}
-.proj h3{font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:8px}
-.proj .tags{margin:16px 0}
-.status{display:inline-block;font-family:var(--mono);font-size:.74rem;color:var(--accent-text);border:1px solid var(--accent);padding:3px 10px}
-.plinks{margin-top:14px;display:flex;gap:18px;font-size:.88rem}
-.proj.future{opacity:.8}
-/* ============ 08 JOURNEY ============ */
-.tl{position:relative;padding-left:36px;max-width:720px}
-.tl::before{content:"";position:absolute;left:4px;top:6px;bottom:6px;width:1px;background:var(--accent)}
-.tl article{position:relative;padding-bottom:44px}
-.tl article::before{content:"";position:absolute;left:-36px;top:9px;width:9px;height:9px;background:var(--bg);border:1px solid var(--accent)}
-.tl h3{font-size:1.8rem;margin:4px 0 8px}
-/* ============ 09 WRITING ============ */
-.post{display:flex;justify-content:space-between;gap:24px;align-items:baseline;padding:20px 0;border-top:1px solid var(--border)}
-.post h3{font-size:clamp(1.3rem,2.4vw,1.75rem);font-weight:400}
-/* ============ 10 PHILOSOPHY ============ */
-.phil{background:var(--bg2);text-align:center}
-.phil blockquote{font-family:var(--serif);font-size:clamp(2.2rem,6vw,5rem);line-height:1.12;font-weight:400;max-width:15em;margin:0 auto 32px}
-.phil blockquote span{display:block;opacity:.25;transition:opacity 1s}
-.phil.in blockquote span{opacity:1}
-.phil.in blockquote span:nth-child(2){transition-delay:.5s}.phil.in blockquote span:nth-child(3){transition-delay:1s}
-/* ============ 11 CONTACT ============ */
-.contact-list{list-style:none;margin:28px 0}
-.contact-list li{padding:10px 0;border-top:1px solid var(--border);word-break:break-word}
-.field{margin-bottom:20px}
-label{display:block;font-size:.85rem;margin-bottom:6px;color:var(--muted)}
-input,textarea{width:100%;background:var(--card);border:1px solid var(--border);color:var(--text);padding:12px 14px;font:inherit}
-textarea{min-height:140px;resize:vertical}
-input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--accent-text)}
-.err{color:var(--accent-text);font-size:.82rem;min-height:1.2em;margin-top:4px}
-#formMsg{margin-top:16px;font-size:.9rem}
-/* ============ 12 FOOTER ============ */
-footer{border-top:1px solid var(--border);padding:56px 0;text-ali
-…
-
-Worked for 45s
-BRO, your portfolio is already structured well. We don't need to rebuild it or disturb your existing design. We'll add a floating AI assistant that matches your dark burgundy aesthetic and connects directly to your working Cloudflare Worker.
-
-The integration will support:
-
-A floating chat button in the bottom-right corner.
-
-A clean chat panel with a welcome message.
-
-Live streaming responses (words appear as they're generated).
-
-Conversation history during the visit.
-
-Mobile-friendly layout.
-
-Error handling if the AI service is unavailable.
-
-We'll make three small additions to your existing index.html. Keep all your existing sections and JavaScript.
-
-1. Add the chat widget CSS
-Find the end of your existing <style> section and paste this immediately before </style>:
-
-/* ============ AI PORTFOLIO ASSISTANT ============ */
-#aiChatLauncher{
-  position:fixed;right:26px;bottom:26px;z-index:300;
-  width:58px;height:58px;border-radius:50%;
-  border:1px solid var(--accent-text);
-  background:var(--accent);color:#fff;
-  font-size:1.35rem;cursor:pointer;
-  box-shadow:0 8px 30px rgba(0,0,0,.35);
-  transition:transform .2s,box-shadow .2s;
-}
-#aiChatLauncher:hover{transform:translateY(-3px);box-shadow:0 12px 35px var(--glow)}
-#aiChatPanel{
-  position:fixed;right:26px;bottom:98px;z-index:300;
-  width:min(390px,calc(100vw - 32px));height:min(540px,calc(100dvh - 130px));
-  display:none;flex-direction:column;overflow:hidden;
-  background:var(--bg2);border:1px solid var(--border);
-  box-shadow:var(--shadow);border-radius:14px;
-}
-#aiChatPanel.open{display:flex}
-.ai-chat-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:17px 18px;border-bottom:1px solid var(--border);
-  background:var(--card);
-}
-.ai-chat-title{font-family:var(--serif);font-size:1.35rem}
-.ai-chat-subtitle{font-family:var(--mono);font-size:.66rem;color:var(--muted);margin-top:3px}
-.ai-chat-close{
-  width:34px;height:34px;border:1px solid var(--border);
-  background:none;color:var(--text);font-size:1.1rem;cursor:pointer;
-}
-#aiChatMessages{
-  flex:1;overflow-y:auto;padding:18px;
-  display:flex;flex-direction:column;gap:13px;
-  scrollbar-width:thin;scrollbar-color:var(--accent) transparent;
-}
-.ai-message{
-  max-width:88%;padding:11px 13px;border:1px solid var(--border);
-  border-radius:10px;font-size:.87rem;line-height:1.6;
-  white-space:pre-wrap;overflow-wrap:anywhere;
-}
-.ai-message.assistant{align-self:flex-start;background:var(--card)}
-.ai-message.user{
-  align-self:flex-end;background:var(--accent);
-  border-color:var(--accent);color:#fff;
-}
-.ai-message.error{border-color:var(--accent-text);color:var(--accent-text)}
-.ai-chat-footer{padding:13px;border-top:1px solid var(--border);background:var(--card)}
-.ai-chat-form{display:flex;gap:8px;align-items:flex-end}
-#aiChatInput{
-  min-width:0;min-height:43px;max-height:110px;resize:vertical;
-  padding:10px 12px;font-size:.85rem;
-}
-#aiChatSend{
-  min-width:48px;height:43px;border:1px solid var(--accent);
-  background:var(--accent);color:#fff;cursor:pointer;font-size:1rem;
-}
-#aiChatSend:disabled{opacity:.5;cursor:not-allowed}
-.ai-chat-note{font-size:.68rem;color:var(--muted);margin-top:8px}
-@media(max-width:520px){
-  #aiChatLauncher{right:17px;bottom:17px}
-  #aiChatPanel{right:8px;bottom:84px;width:calc(100vw - 16px);height:min(570px,calc(100dvh - 105px))}
-}
-@media(prefers-reduced-motion:reduce){
-  #aiChatLauncher{transition:none}
-}
-
-2. Add the chat widget HTML
-Find this line near the bottom:
-
-<!-- ============ 12 FOOTER ============ -->
-
-Paste this block immediately before it:
-
-<!-- ============ AI PORTFOLIO ASSISTANT ============ -->
-<button id="aiChatLauncher" type="button"
-        aria-label="Open AI portfolio assistant"
-        aria-controls="aiChatPanel"
-        aria-expanded="false">✦</button>
-
-<section id="aiChatPanel" aria-label="AI portfolio assistant">
-  <div class="ai-chat-header">
-    <div>
-      <div class="ai-chat-title">Ishaq's Assistant</div>
-      <div class="ai-chat-subtitle">AI · PORTFOLIO GUIDE</div>
-    </div>
-    <button class="ai-chat-close" id="aiChatClose"
-            type="button" aria-label="Close chat">×</button>
-  </div>
-
-  <div id="aiChatMessages" aria-live="polite" aria-relevant="additions text">
-    <div class="ai-message assistant">
-      Hello. I'm Ishaq's AI portfolio assistant. Ask me about his background,
-      projects, technical interests, or learning journey.
-    </div>
-  </div>
-
-  <div class="ai-chat-footer">
-    <form class="ai-chat-form" id="aiChatForm">
-      <label class="sr" for="aiChatInput">Your message</label>
-      <textarea id="aiChatInput" rows="1"
-                placeholder="Ask me something..."
-                maxlength="4000" required></textarea>
-      <button id="aiChatSend" type="submit" aria-label="Send message">↑</button>
-    </form>
-    <p class="ai-chat-note">AI-generated responses · Verify important information.</p>
-  </div>
-</section>
-
-3. Add the chatbot JavaScript
-Find the very bottom of your existing JavaScript, immediately before the final </script>, and paste this:
-
-/* ============ CLOUDFLARE AI PORTFOLIO CHAT ============ */
-(function(){
-  const API_URL = "https://ishaq-portfolio-chat.ishaqueabdullah6.workers.dev/api/chat";
-
-  const panel = document.querySelector("#aiChatPanel");
-  const launcher = document.querySelector("#aiChatLauncher");
-  const closeBtn = document.querySelector("#aiChatClose");
-  const form = document.querySelector("#aiChatForm");
-  const input = document.querySelector("#aiChatInput");
-  const sendBtn = document.querySelector("#aiChatSend");
-  const messagesEl = document.querySelector("#aiChatMessages");
-
-  if(!panel || !launcher || !form || !input) return;
-
-  const history = [
-    {
-      role:"assistant",
-      content:"Hello. I'm Ishaq's AI portfolio assistant. Ask me about his background, projects, technical interests, or learning journey."
-    }
-  ];
-
-  let isSending = false;
-
-  function openChat(){
-    panel.classList.add("open");
-    launcher.setAttribute("aria-expanded","true");
-    input.focus();
-  }
-
-  function closeChat(){
-    panel.classList.remove("open");
-    launcher.setAttribute("aria-expanded","false");
-    launcher.focus();
-  }
-
-  launcher.addEventListener("click",()=>{
-    panel.classList.contains("open") ? closeChat() : openChat();
-  });
-
-  closeBtn.addEventListener("click",closeChat);
-
-  document.addEventListener("keydown",e=>{
-    if(e.key==="Escape" && panel.classList.contains("open")) closeChat();
-  });
-
-  function addMessage(content,type){
-    const el=document.createElement("div");
-    el.className="ai-message "+type;
-    el.textContent=content;
-    messagesEl.appendChild(el);
-    messagesEl.scrollTop=messagesEl.scrollHeight;
-    return el;
-  }
-
-  function setBusy(busy){
-    isSending=busy;
-    sendBtn.disabled=busy;
-    input.disabled=busy;
-    sendBtn.textContent=busy?"…":"↑";
-  }
-
-  async function sendMessage(message){
-    if(isSending || !message.trim()) return;
-
-    const cleanMessage=message.trim();
-
-    addMessage(cleanMessage,"user");
-    history.push({role:"user",content:cleanMessage});
-
-    input.value="";
-    setBusy(true);
-
-    const assistantBubble=addMessage("","assistant");
-    let answer="";
-
-    try{
-      const response=await fetch(API_URL,{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({
-          messages:history.slice(-12)
-        })
-      });
-
-      if(!response.ok){
-        const details=await response.text();
-        throw new Error("Server returned "+response.status+": "+details.slice(0,250));
-      }
-
-      if(!response.body){
-        throw new Error("Streaming is not supported by this browser.");
-      }
-
-      const reader=response.body.getReader();
-      const decoder=new TextDecoder();
-      let buffer="";
-
-      function processLine(line){
-        line=line.trim();
-
-        if(!line.startsWith("data:")) return;
-
-        const data=line.slice(5).trim();
-
-        if(!data || data==="[DONE]") return;
-
-        try{
-          const parsed=JSON.parse(data);
-
-          if(typeof parsed.response==="string"){
-            answer+=parsed.response;
-            assistantBubble.textContent=answer;
-            messagesEl.scrollTop=messagesEl.scrollHeight;
-          }
-        }catch(error){
-          console.warn("Could not parse AI stream event:",error);
-        }
-      }
-
-      while(true){
-        const {value,done}=await reader.read();
-
-        if(done) break;
-
-        buffer+=decoder.decode(value,{stream:true});
-
-        const lines=buffer.split("\n");
-        buffer=lines.pop() || "";
-
-        lines.forEach(processLine);
-      }
-
-      buffer+=decoder.decode();
-
-      if(buffer.trim()) processLine(buffer);
-
-      if(!answer){
-        assistantBubble.textContent="I couldn't generate a response. Please try again.";
-        assistantBubble.classList.add("error");
-      }else{
-        history.push({role:"assistant",content:answer});
-      }
-
-    }catch(error){
-      console.error("Portfolio AI chat error:",error);
-      assistantBubble.textContent="The assistant is temporarily unavailable. Please try again in a moment.";
-      assistantBubble.classList.add("error");
-    }finally{
-      setBusy(false);
-      input.focus();
-    }
-  }
-
-  form.addEventListener("submit",e=>{
-    e.preventDefault();
-    sendMessage(input.value);
-  });
-
-  input.addEventListener("keydown",e=>{
-    if(e.key==="Enter" && !e.shiftKey){
-      e.preventDefault();
-      form.requestSubmit();
-    }
-  });
-})();
-
-One small CSS correction: because the chat panel uses a <section> element, your existing global section styling would add unwanted padding and a border. Add this to the chat CSS from step 1:
-
-#aiChatPanel{
-  padding:0;
-  border-top:1px solid var(--border);
-}
-
-4. Publish the changes
-Open your GitHub repository: ishaq-portfolio.
-
-Open index.html.
-
-Click the pencil icon to edit.
-
-Add the CSS, HTML and JavaScript from above.
-
-Commit the changes to main.
-
-Wait for Cloudflare Pages to finish deploying.
-
-Then open your live portfolio and click the ✦ button in the bottom-right corner.
-
-Backend verified Frontend integration pending
-
-Important: This integration doesn't modify your portrait, face, body proportions, or any existing portfolio content.
-
-Once deployed, test these three messages:
-
-"Who is Ishaq?"
-
-"Tell me about his AI Study Assistant."
-
-"What technologies is he currently learning?"
-
-Send me a screenshot of the working chat—or the browser console error if something goes wrong. We'll debug the actual issue rather than randomly changing your website.
-
-gimme full  codes again and tell me where to paste
-
-Worked for 10s
-Absolutely bro. We'll do this carefully so you don't accidentally break your existing portfolio.
-
-You do NOT need to replace your entire index.html. Keep your current website code exactly as it is. You'll add three complete code blocks in three specific locations.
-
-Step 1 — Add the CSS
-Open your index.html file in VS Code.
-
-Find the very first closing </style> tag near the top of the file.
-
-Paste this entire block immediately ABOVE </style>.
-
-Complete CSS code
-
-
-/* ============ AI PORTFOLIO ASSISTANT ============ */
-
-#aiChatLauncher {
-  position: fixed;
-  right: 26px;
-  bottom: 26px;
-  z-index: 300;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  border: 1px solid var(--accent-text);
-  background: var(--accent);
-  color: #fff;
-  font-size: 1.35rem;
-  cursor: pointer;
-  box-shadow: 0 8px 30px rgba(0,0,0,.35);
-  transition: transform .2s, box-shadow .2s;
-}
-
-#aiChatLauncher:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px var(--glow);
-}
-
-#aiChatPanel {
-  position: fixed;
-  right: 26px;
-  bottom: 98px;
-  z-index: 300;
-  width: min(390px, calc(100vw - 32px));
-  height: min(540px, calc(100dvh - 130px));
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  padding: 0;
-  border-top: 1px solid var(--border);
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  border-radius: 14px;
-}
-
-#aiChatPanel.open {
-  display: flex;
-}
-
-.ai-chat-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 17px 18px;
-  border-bottom: 1px solid var(--border);
-  background: var(--card);
-}
-
-.ai-chat-title {
-  font-family: var(--serif);
-  font-size: 1.35rem;
-}
-
-.ai-chat-subtitle {
-  font-family: var(--mono);
-  font-size: .66rem;
-  color: var(--muted);
-  margin-top: 3px;
-}
-
-.ai-chat-close {
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--border);
-  background: none;
-  color: var(--text);
-  font-size: 1.1rem;
-  cursor: pointer;
-}
-
-#aiChatMessages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent) transparent;
-}
-
-.ai-message {
-  max-width: 88%;
-  padding: 11px 13px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  font-size: .87rem;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-
-.ai-message.assistant {
-  align-self: flex-start;
-  background: var(--card);
-}
-
-.ai-message.user {
-  align-self: flex-end;
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-}
-
-.ai-message.error {
-  border-color: var(--accent-text);
-  color: var(--accent-text);
-}
-
-.ai-chat-footer {
-  padding: 13px;
-  border-top: 1px solid var(--border);
-  background: var(--card);
-}
-
-.ai-chat-form {
-  display: flex;
-  gap: 8px;
-  align-items: flex-end;
-}
-
-#aiChatInput {
-  min-width: 0;
-  min-height: 43px;
-  max-height: 110px;
-  resize: vertical;
-  padding: 10px 12px;
-  font-size: .85rem;
-}
-
-#aiChatSend {
-  min-width: 48px;
-  height: 43px;
-  border: 1px solid var(--accent);
-  background: var(--accent);
-  color: #fff;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-#aiChatSend:disabled {
-  opacity: .5;
-  cursor: not-allowed;
-}
-
-.ai-chat-note {
-  font-size: .68rem;
-  color: var(--muted);
-  margin-top: 8px;
-}
-
-@media (max-width: 520px) {
-  #aiChatLauncher {
-    right: 17px;
-    bottom: 17px;
-  }
-
-  #aiChatPanel {
-    right: 8px;
-    bottom: 84px;
-    width: calc(100vw - 16px);
-    height: min(570px, calc(100dvh - 105px));
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #aiChatLauncher {
-    transition: none;
-  }
-}
-
-Step 2 — Add the HTML
-Scroll down until you find:
-
-<!-- ============ 12 FOOTER ============ -->
-
-Paste this complete block immediately ABOVE that comment.
-
-Complete HTML code
-
-
-<!-- ============ AI PORTFOLIO ASSISTANT ============ -->
-
-<button
-  id="aiChatLauncher"
-  type="button"
-  aria-label="Open AI portfolio assistant"
-  aria-controls="aiChatPanel"
-  aria-expanded="false"
->✦</button>
-
-<section id="aiChatPanel" aria-label="AI portfolio assistant">
-
-  <div class="ai-chat-header">
-    <div>
-      <div class="ai-chat-title">Ishaq's Assistant</div>
-      <div class="ai-chat-subtitle">AI · PORTFOLIO GUIDE</div>
-    </div>
-
-    <button
-      class="ai-chat-close"
-      id="aiChatClose"
-      type="button"
-      aria-label="Close chat"
-    >×</button>
-  </div>
-
-  <div
-    id="aiChatMessages"
-    aria-live="polite"
-    aria-relevant="additions text"
-  >
-    <div class="ai-message assistant">
-      Hello. I'm Ishaq's AI portfolio assistant. Ask me about his background, projects, technical interests, or learning journey.
-    </div>
-  </div>
-
-  <div class="ai-chat-footer">
-
-    <form class="ai-chat-form" id="aiChatForm">
-
-      <label class="sr" for="aiChatInput">
-        Your message
-      </label>
-
-      <textarea
-        id="aiChatInput"
-        rows="1"
-        placeholder="Ask me something..."
-        maxlength="4000"
-        required
-      ></textarea>
-
-      <button
-        id="aiChatSend"
-        type="submit"
-        aria-label="Send message"
-      >↑</button>
-
-    </form>
-
-    <p class="ai-chat-note">
-      AI-generated responses · Verify important information.
-    </p>
-
-  </div>
-
-</section>
-
-Step 3 — Add the JavaScript
-Scroll all the way to the bottom of your file.
-
-You'll see your existing JavaScript ending with something like:
-
-})();
-</script>
-</body>
-</html>
-
-Paste this complete JavaScript block immediately ABOVE the final </script> tag.
-
-Do not delete your existing JavaScript.
-
-Complete JavaScript code
-
-
-/* ============ CLOUDFLARE AI PORTFOLIO CHAT ============ */
-
-(function () {
-
-  const API_URL =
-    "https://ishaq-portfolio-chat.ishaqueabdullah6.workers.dev/api/chat";
-
-  const panel = document.querySelector("#aiChatPanel");
-  const launcher = document.querySelector("#aiChatLauncher");
-  const closeBtn = document.querySelector("#aiChatClose");
-  const form = document.querySelector("#aiChatForm");
-  const input = document.querySelector("#aiChatInput");
-  const sendBtn = document.querySelector("#aiChatSend");
-  const messagesEl = document.querySelector("#aiChatMessages");
-
-  if (!panel || !launcher || !form || !input) return;
-
-  const history = [];
-
-  let isSending = false;
-
-  function openChat() {
-    panel.classList.add("open");
-    launcher.setAttribute("aria-expanded", "true");
-    input.focus();
-  }
-
-  function closeChat() {
-    panel.classList.remove("open");
-    launcher.setAttribute("aria-expanded", "false");
-    launcher.focus();
-  }
-
-  launcher.addEventListener("click", () => {
-    panel.classList.contains("open") ? closeChat() : openChat();
-  });
-
-  closeBtn.addEventListener("click", closeChat);
-
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape" && panel.classList.contains("open")) {
-      closeChat();
-    }
-  });
-
-  function addMessage(content, type) {
-    const el = document.createElement("div");
-
-    el.className = "ai-message " + type;
-    el.textContent = content;
-
-    messagesEl.appendChild(el);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-
-    return el;
-  }
-
-  function setBusy(busy) {
-    isSending = busy;
-    sendBtn.disabled = busy;
-    input.disabled = busy;
-    sendBtn.textContent = busy ? "…" : "↑";
-  }
-
-  async function sendMessage(message) {
-
-    if (isSending || !message.trim()) return;
-
-    const cleanMessage = message.trim();
-
-    addMessage(cleanMessage, "user");
-
-    history.push({
-      role: "user",
-      content: cleanMessage
-    });
-
-    input.value = "";
-    setBusy(true);
-
-    const assistantBubble = addMessage("", "assistant");
-
-    let answer = "";
-
-    try {
-
-      const response = await fetch(API_URL, {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-          messages: history.slice(-12)
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error("Server error: " + response.status);
-      }
-
-      if (!response.body) {
-        throw new Error("Streaming is not supported.");
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-
-      let buffer = "";
-
-      function processLine(line) {
-
-        line = line.trim();
-
-        if (!line.startsWith("data:")) return;
-
-        const data = line.slice(5).trim();
-
-        if (!data || data === "[DONE]") return;
-
-        try {
-
-          const parsed = JSON.parse(data);
-
-          if (typeof parsed.response === "string") {
-
-            answer += parsed.response;
-
-            assistantBubble.textContent = answer;
-
-            messagesEl.scrollTop = messagesEl.scrollHeight;
-          }
-
-        } catch (error) {
-          console.warn("AI stream parsing error:", error);
-        }
-      }
-
-      while (true) {
-
-        const { value, done } = await reader.read();
-
-        if (done) break;
-
-        buffer += decoder.decode(value, {
-          stream: true
-        });
-
-        const lines = buffer.split("\n");
-
-        buffer = lines.pop() || "";
-
-        lines.forEach(processLine);
-      }
-
-      buffer += decoder.decode();
-
-      if (buffer.trim()) {
-        processLine(buffer);
-      }
-
-      if (!answer) {
-
-        assistantBubble.textContent =
-          "I couldn't generate a response. Please try again.";
-
-        assistantBubble.classList.add("error");
-
-      } else {
-
-        history.push({
-          role: "assistant",
-          content: answer
-        });
-
-      }
-
-    } catch (error) {
-
-      console.error("Portfolio AI chat error:", error);
-
-      assistantBubble.textContent =
-        "The assistant is temporarily unavailable. Please try again in a moment.";
-
-      assistantBubble.classList.add("error");
-
-    } finally {
-
-      setBusy(false);
-      input.focus();
-
-    }
-  }
-
-  form.addEventListener("submit", e => {
-
-    e.preventDefault();
-
-    sendMessage(input.value);
-
-  });
-
-  input.addEventListener("keydown", e => {
-
-    if (e.key === "Enter" && !e.shiftKey) {
-
-      e.preventDefault();
-
-      form.requestSubmit();
-
-    }
-
-  });
-
-})();
-
-Step 4 — Save and deploy
-Your final file structure should look like this:
-
-index.html
-
-1. Existing HTML and CSS
-
-+ AI chatbot CSS before </style>
-
-2. Existing website sections
-
-+ AI chatbot HTML before footer
-
-3. Existing JavaScript
-
-+ AI chatbot JavaScript before </script>
-
-Save index.html using Ctrl + S.
-
-Open your website locally and test the chat button.
-Commit and push the updated file to your GitHub repository's main branch.
-
-Wait for Cloudflare Pages deployment to finish.
-Test the live portfolio on desktop and mobile.
-Step 5 — Test your assistant
-Try these questions:
-
-Who is Muhammad Ishaq Abdullah?
-
-What is he studying at BZU?
-
-Tell me about his AI Study Assistant project.
-
-What technologies is he learning?
-
-What are his long-term engineering ambitions?
-
-One important note: Your Worker is already responding successfully with streamed AI output. This code connects that existing backend; it doesn't require another Worker deployment.
-
-And your existing portrait file, assets/portrait.jpg, remains untouched.
-
-My recommendation: First add these three blocks and test locally. Don't change any other part of the website until the chatbot works.
-
-bro gimme complete code to paste in index, with these change you told, keeping the site same
-
-Worked for 53s
-Bro, I found your actual personal portfolio source in icarus9111/ishaq-portfolio — the dark burgundy site with the original portrait, animations, theme switcher and sections.
-
-I'll preserve that version and integrate the chatbot into it. I won't replace it with a redesigned template or touch your portrait.
-
-Here is the complete replacement index.html, with the chatbot integrated. It keeps your existing content, styling, animations, navigation, theme switcher, contact form and portrait path.
-
-Replace the contents of your current index.html with this entire file. You don't need to paste the three separate snippets anymore.
-
 
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -2249,9 +1213,327 @@ $("#yr").textContent=new Date().getFullYear();
     msg.innerHTML=
       `Opening your email app. Nothing has been sent yet. If it doesn't open, write to <a href="mailto:ishaqueabdullah6@gmail.com">ishaqueabdullah6@gmail.com</a>.`;
 
-    location
+    location.href=url;
+  });
+})();
 
+/* ============ ANIMATION ============ */
+(function(){
+  const bar=$("#bar");
+  const glow=$("#glow");
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  const prog=()=>{
+    const m=document.documentElement.scrollHeight-innerHeight;
+    bar.style.transform=`scaleX(${m>0?scrollY/m:0})`;
+  };
 
+  prog();
+  addEventListener("scroll",prog,{passive:true});
 
+  if(reduce)return;
 
+  let gx=0,gy=0,raf=0;
+
+  addEventListener("pointermove",e=>{
+    gx=e.clientX;
+    gy=e.clientY;
+    glow.style.opacity=1;
+
+    if(!raf){
+      raf=requestAnimationFrame(()=>{
+        glow.style.transform=`translate(${gx}px,${gy}px)`;
+        raf=0;
+      });
+    }
+  },{passive:true});
+
+  document.addEventListener("pointerleave",()=>{
+    glow.style.opacity=0;
+  });
+
+  const pt=$("#portrait");
+
+  pt.addEventListener("pointermove",e=>{
+    const r=pt.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+
+    pt.style.transform=
+      `perspective(900px) rotateY(${x*8}deg) rotateX(${-y*8}deg)`;
+  });
+
+  pt.addEventListener("pointerleave",()=>{
+    pt.style.transform="";
+  });
+
+  const hero=$("#top");
+  const sys=hero.querySelector(".sys");
+
+  hero.addEventListener("pointermove",e=>{
+    const r=hero.getBoundingClientRect();
+
+    sys.style.transform=
+      `translate(${((e.clientX-r.left)/r.width-.5)*-16}px,${((e.clientY-r.top)/r.height-.5)*-12}px)`;
+  });
+
+  const c=$("#fx");
+  const x=c.getContext("2d");
+
+  let w,h,run=false,on=true;
+
+  const size=()=>{
+    w=c.width=c.offsetWidth;
+    h=c.height=c.offsetHeight;
+  };
+
+  size();
+  addEventListener("resize",size);
+
+  const ps=Array.from({length:44},()=>({
+    x:Math.random()*w,
+    y:Math.random()*h,
+    r:Math.random()*1.4+.3,
+    v:Math.random()*.25+.05,
+    a:Math.random()*.5+.15,
+    d:Math.random()*6
+  }));
+
+  function loop(){
+    if(!on){
+      run=false;
+      return;
+    }
+
+    run=true;
+    x.clearRect(0,0,w,h);
+    const t=performance.now()/1000;
+
+    ps.forEach(p=>{
+      p.y-=p.v;
+      p.x+=Math.sin(t+p.d)*.15;
+
+      if(p.y<-5){
+        p.y=h+5;
+        p.x=Math.random()*w;
+      }
+
+      x.beginPath();
+      x.arc(p.x,p.y,p.r,0,6.283);
+      x.fillStyle=`rgba(207,106,115,${p.a*(.6+.4*Math.sin(t*1.5+p.d))})`;
+      x.fill();
+    });
+
+    requestAnimationFrame(loop);
+  }
+
+  new IntersectionObserver(e=>{
+    on=e[0].isIntersecting;
+    if(on&&!run)loop();
+  }).observe(c);
+})();
+
+/* ============ CLOUDFLARE AI PORTFOLIO CHAT ============ */
+(function(){
+
+  const API_URL=
+    "https://ishaq-portfolio-chat.ishaqueabdullah6.workers.dev/api/chat";
+
+  const panel=$("#aiChatPanel");
+  const launcher=$("#aiChatLauncher");
+  const closeBtn=$("#aiChatClose");
+  const form=$("#aiChatForm");
+  const input=$("#aiChatInput");
+  const sendBtn=$("#aiChatSend");
+  const messagesEl=$("#aiChatMessages");
+
+  if(!panel||!launcher||!form||!input)return;
+
+  const history=[];
+
+  let isSending=false;
+
+  function openChat(){
+    panel.classList.add("open");
+    launcher.setAttribute("aria-expanded","true");
+    input.focus();
+  }
+
+  function closeChat(){
+    panel.classList.remove("open");
+    launcher.setAttribute("aria-expanded","false");
+    launcher.focus();
+  }
+
+  launcher.addEventListener("click",()=>{
+    panel.classList.contains("open")?closeChat():openChat();
+  });
+
+  closeBtn.addEventListener("click",closeChat);
+
+  document.addEventListener("keydown",e=>{
+    if(e.key==="Escape"&&panel.classList.contains("open")){
+      closeChat();
+    }
+  });
+
+  function addMessage(content,type){
+    const el=document.createElement("div");
+
+    el.className="ai-message "+type;
+    el.textContent=content;
+
+    messagesEl.appendChild(el);
+    messagesEl.scrollTop=messagesEl.scrollHeight;
+
+    return el;
+  }
+
+  function setBusy(busy){
+    isSending=busy;
+    sendBtn.disabled=busy;
+    input.disabled=busy;
+    sendBtn.textContent=busy?"…":"↑";
+  }
+
+  async function sendMessage(message){
+
+    if(isSending||!message.trim())return;
+
+    const cleanMessage=message.trim();
+
+    addMessage(cleanMessage,"user");
+
+    history.push({
+      role:"user",
+      content:cleanMessage
+    });
+
+    input.value="";
+    setBusy(true);
+
+    const assistantBubble=addMessage("","assistant");
+
+    let answer="";
+
+    try{
+
+      const response=await fetch(API_URL,{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          messages:history.slice(-12)
+        })
+      });
+
+      if(!response.ok){
+        throw new Error("Server error: "+response.status);
+      }
+
+      if(!response.body){
+        throw new Error("Streaming is not supported by this browser.");
+      }
+
+      const reader=response.body.getReader();
+      const decoder=new TextDecoder();
+
+      let buffer="";
+
+      function processLine(line){
+
+        line=line.trim();
+
+        if(!line.startsWith("data:"))return;
+
+        const data=line.slice(5).trim();
+
+        if(!data||data==="[DONE]")return;
+
+        try{
+
+          const parsed=JSON.parse(data);
+
+          if(typeof parsed.response==="string"){
+            answer+=parsed.response;
+            assistantBubble.textContent=answer;
+            messagesEl.scrollTop=messagesEl.scrollHeight;
+          }
+
+        }catch(error){
+          console.warn("AI stream parsing error:",error);
+        }
+      }
+
+      while(true){
+
+        const {value,done}=await reader.read();
+
+        if(done)break;
+
+        buffer+=decoder.decode(value,{stream:true});
+
+        const lines=buffer.split("\n");
+
+        buffer=lines.pop()||"";
+
+        lines.forEach(processLine);
+      }
+
+      buffer+=decoder.decode();
+
+      if(buffer.trim()){
+        processLine(buffer);
+      }
+
+      if(!answer){
+
+        assistantBubble.textContent=
+          "I couldn't generate a response. Please try again.";
+
+        assistantBubble.classList.add("error");
+
+      }else{
+
+        history.push({
+          role:"assistant",
+          content:answer
+        });
+
+      }
+
+    }catch(error){
+
+      console.error("Portfolio AI chat error:",error);
+
+      assistantBubble.textContent=
+        "The assistant is temporarily unavailable. Please try again in a moment.";
+
+      assistantBubble.classList.add("error");
+
+    }finally{
+
+      setBusy(false);
+      input.focus();
+
+    }
+  }
+
+  form.addEventListener("submit",e=>{
+    e.preventDefault();
+    sendMessage(input.value);
+  });
+
+  input.addEventListener("keydown",e=>{
+    if(e.key==="Enter"&&!e.shiftKey){
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
