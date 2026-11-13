@@ -1473,12 +1473,15 @@ $("#yr").textContent=new Date().getFullYear();
     const assistantBubble=addMessage("Thinking…","assistant");
     assistantBubble.classList.add("typing");
     let answer="";
+    const controller=new AbortController();
+    const requestTimeout=setTimeout(()=>controller.abort(),45000);
 
     try{
       const response=await fetch(API_URL,{
         method:"POST",
         headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({messages:history.slice(-12)})
+        body:JSON.stringify({messages:history.slice(-12)}),
+        signal:controller.signal
       });
 
       if(!response.ok)throw new Error("Server error: "+response.status);
@@ -1527,9 +1530,12 @@ $("#yr").textContent=new Date().getFullYear();
     }catch(error){
       console.error("Portfolio AI chat error:",error);
       assistantBubble.classList.remove("typing");
-      assistantBubble.textContent="The assistant is temporarily unavailable. Please try again in a moment.";
+      assistantBubble.textContent=error.name==="AbortError"
+        ?"That took longer than expected. Please try again."
+        :"The assistant is temporarily unavailable. Please try again in a moment.";
       assistantBubble.classList.add("error");
     }finally{
+      clearTimeout(requestTimeout);
       setBusy(false);
       input.focus();
     }
