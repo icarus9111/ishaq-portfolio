@@ -546,6 +546,63 @@ input:focus,textarea:focus{
 @media(prefers-reduced-motion:reduce){
   #aiChatLauncher{transition:none}
 }
+
+/* ============ CHATBOT UI REFINEMENT ============ */
+.ai-chat-identity{display:flex;align-items:center;gap:11px;min-width:0}
+.ai-chat-avatar{
+  width:29px;height:29px;flex:0 0 29px;border-radius:50%;
+  display:grid;place-items:center;background:var(--accent);
+  border:1px solid var(--accent-text);color:#fff;
+  font:500 .68rem var(--mono);letter-spacing:-.04em
+}
+.ai-chat-avatar-large{width:39px;height:39px;flex-basis:39px;font-size:.78rem}
+.ai-chat-subtitle{display:flex;align-items:center;gap:7px}
+.ai-status-dot{
+  width:6px;height:6px;border-radius:50%;background:#6EAA82;
+  box-shadow:0 0 8px rgba(110,170,130,.45)
+}
+#aiChatMessages{align-items:stretch;text-align:left}
+.ai-message-row{display:flex;align-items:flex-end;gap:9px;width:100%}
+.ai-message-row.assistant-row{justify-content:flex-start}
+.ai-message-row.user-row{justify-content:flex-end}
+.ai-message{
+  text-align:left;max-width:min(84%,300px);
+  padding:11px 14px;border-radius:4px 13px 13px 13px;
+  font-size:.86rem;line-height:1.65;letter-spacing:0;
+  white-space:pre-wrap;overflow-wrap:anywhere
+}
+.ai-message-row.user-row .ai-message{
+  border-radius:13px 4px 13px 13px;text-align:left
+}
+.ai-message-row.user-row .ai-chat-avatar{display:none}
+.ai-message-row.assistant-row .ai-message{max-width:calc(100% - 40px)}
+.ai-chat-suggestions{display:flex;flex-wrap:wrap;gap:7px;padding-left:38px}
+.ai-chat-suggestions-label{
+  width:100%;font: .62rem var(--mono);letter-spacing:.08em;
+  color:var(--muted);margin:2px 0 1px
+}
+.ai-suggestion{
+  border:1px solid var(--border);border-radius:999px;
+  padding:7px 10px;background:transparent;color:var(--muted);
+  font: .72rem var(--sans);cursor:pointer;text-align:left;
+  transition:border-color .2s,color .2s,background .2s
+}
+.ai-suggestion:hover{border-color:var(--accent-text);color:var(--text);background:var(--glow2)}
+.ai-chat-suggestions[hidden]{display:none}
+.ai-message.typing{color:var(--muted);font-style:italic}
+.ai-chat-form{align-items:flex-end}
+#aiChatInput{
+  display:block;min-height:44px;max-height:116px;line-height:1.45;
+  border-radius:4px;padding:11px 12px;overflow-y:auto
+}
+#aiChatSend{border-radius:3px;transition:background .2s,transform .2s}
+#aiChatSend:hover:not(:disabled){background:#8a2f38;transform:translateY(-1px)}
+.ai-chat-note{text-align:left;line-height:1.45}
+@media(max-width:520px){
+  .ai-chat-suggestions{padding-left:0}
+  .ai-message{max-width:88%}
+}
+
 </style>
 </head>
 
@@ -872,36 +929,39 @@ input:focus,textarea:focus{
 
 <section id="aiChatPanel" aria-label="AI portfolio assistant">
   <div class="ai-chat-header">
-    <div>
-      <div class="ai-chat-title">Ishaq's Assistant</div>
-      <div class="ai-chat-subtitle">AI · PORTFOLIO GUIDE</div>
+    <div class="ai-chat-identity">
+      <div class="ai-chat-avatar ai-chat-avatar-large" aria-hidden="true">IA</div>
+      <div>
+        <div class="ai-chat-title">Ishaq's Assistant</div>
+        <div class="ai-chat-subtitle"><span class="ai-status-dot"></span> AI · PORTFOLIO GUIDE</div>
+      </div>
     </div>
-
     <button class="ai-chat-close" id="aiChatClose"
       type="button" aria-label="Close chat">×</button>
   </div>
 
   <div id="aiChatMessages" aria-live="polite" aria-relevant="additions text">
-    <div class="ai-message assistant">
-      Hello. I'm Ishaq's AI portfolio assistant. Ask me about his background,
-      projects, technical interests, or learning journey.
+    <div class="ai-message-row assistant-row">
+      <div class="ai-chat-avatar" aria-hidden="true">IA</div>
+      <div class="ai-message assistant">Hello! Welcome to Ishaq's portfolio. I can tell you about his projects, technical interests, learning journey and approach to building software.</div>
+    </div>
+    <div class="ai-chat-suggestions" id="aiChatSuggestions">
+      <p class="ai-chat-suggestions-label">EXPLORE THE PORTFOLIO</p>
+      <button type="button" class="ai-suggestion">What is he building?</button>
+      <button type="button" class="ai-suggestion">What are his technical interests?</button>
+      <button type="button" class="ai-suggestion">Tell me about his AI journey</button>
     </div>
   </div>
 
   <div class="ai-chat-footer">
     <form class="ai-chat-form" id="aiChatForm">
       <label class="sr" for="aiChatInput">Your message</label>
-
       <textarea id="aiChatInput" rows="1"
         placeholder="Ask me something..."
         maxlength="4000" required></textarea>
-
       <button id="aiChatSend" type="submit" aria-label="Send message">↑</button>
     </form>
-
-    <p class="ai-chat-note">
-      AI-generated responses · Verify important information.
-    </p>
+    <p class="ai-chat-note">AI-generated responses · Verify important information.</p>
   </div>
 </section>
 
@@ -1335,10 +1395,7 @@ $("#yr").textContent=new Date().getFullYear();
 
 /* ============ CLOUDFLARE AI PORTFOLIO CHAT ============ */
 (function(){
-
-  const API_URL=
-    "https://ishaq-portfolio-chat.ishaqueabdullah6.workers.dev/api/chat";
-
+  const API_URL="https://ishaq-portfolio-chat.ishaqueabdullah6.workers.dev/api/chat";
   const panel=$("#aiChatPanel");
   const launcher=$("#aiChatLauncher");
   const closeBtn=$("#aiChatClose");
@@ -1346,11 +1403,11 @@ $("#yr").textContent=new Date().getFullYear();
   const input=$("#aiChatInput");
   const sendBtn=$("#aiChatSend");
   const messagesEl=$("#aiChatMessages");
+  const suggestions=$("#aiChatSuggestions");
 
-  if(!panel||!launcher||!form||!input)return;
+  if(!panel||!launcher||!form||!input||!messagesEl)return;
 
   const history=[];
-
   let isSending=false;
 
   function openChat(){
@@ -1368,25 +1425,30 @@ $("#yr").textContent=new Date().getFullYear();
   launcher.addEventListener("click",()=>{
     panel.classList.contains("open")?closeChat():openChat();
   });
-
   closeBtn.addEventListener("click",closeChat);
-
   document.addEventListener("keydown",e=>{
-    if(e.key==="Escape"&&panel.classList.contains("open")){
-      closeChat();
-    }
+    if(e.key==="Escape"&&panel.classList.contains("open"))closeChat();
   });
 
   function addMessage(content,type){
-    const el=document.createElement("div");
+    const row=document.createElement("div");
+    row.className="ai-message-row "+(type==="user"?"user-row":"assistant-row");
 
-    el.className="ai-message "+type;
-    el.textContent=content;
+    if(type==="assistant"){
+      const avatar=document.createElement("div");
+      avatar.className="ai-chat-avatar";
+      avatar.setAttribute("aria-hidden","true");
+      avatar.textContent="IA";
+      row.appendChild(avatar);
+    }
 
-    messagesEl.appendChild(el);
+    const bubble=document.createElement("div");
+    bubble.className="ai-message "+type;
+    bubble.textContent=content;
+    row.appendChild(bubble);
+    messagesEl.appendChild(row);
     messagesEl.scrollTop=messagesEl.scrollHeight;
-
-    return el;
+    return bubble;
   }
 
   function setBusy(busy){
@@ -1394,135 +1456,93 @@ $("#yr").textContent=new Date().getFullYear();
     sendBtn.disabled=busy;
     input.disabled=busy;
     sendBtn.textContent=busy?"…":"↑";
+    sendBtn.setAttribute("aria-label",busy?"Sending message":"Send message");
   }
 
   async function sendMessage(message){
-
     if(isSending||!message.trim())return;
 
     const cleanMessage=message.trim();
-
+    if(suggestions)suggestions.hidden=true;
     addMessage(cleanMessage,"user");
-
-    history.push({
-      role:"user",
-      content:cleanMessage
-    });
-
+    history.push({role:"user",content:cleanMessage});
     input.value="";
+    input.style.height="44px";
     setBusy(true);
 
-    const assistantBubble=addMessage("","assistant");
-
+    const assistantBubble=addMessage("Thinking…","assistant");
+    assistantBubble.classList.add("typing");
     let answer="";
 
     try{
-
       const response=await fetch(API_URL,{
         method:"POST",
-        headers:{
-          "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-          messages:history.slice(-12)
-        })
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({messages:history.slice(-12)})
       });
 
-      if(!response.ok){
-        throw new Error("Server error: "+response.status);
-      }
-
-      if(!response.body){
-        throw new Error("Streaming is not supported by this browser.");
-      }
+      if(!response.ok)throw new Error("Server error: "+response.status);
+      if(!response.body)throw new Error("Streaming is not supported by this browser.");
 
       const reader=response.body.getReader();
       const decoder=new TextDecoder();
-
       let buffer="";
 
       function processLine(line){
-
         line=line.trim();
-
         if(!line.startsWith("data:"))return;
-
         const data=line.slice(5).trim();
-
         if(!data||data==="[DONE]")return;
-
         try{
-
           const parsed=JSON.parse(data);
-
           if(typeof parsed.response==="string"){
             answer+=parsed.response;
+            assistantBubble.classList.remove("typing");
             assistantBubble.textContent=answer;
             messagesEl.scrollTop=messagesEl.scrollHeight;
           }
-
         }catch(error){
           console.warn("AI stream parsing error:",error);
         }
       }
 
       while(true){
-
         const {value,done}=await reader.read();
-
         if(done)break;
-
         buffer+=decoder.decode(value,{stream:true});
-
         const lines=buffer.split("\n");
-
         buffer=lines.pop()||"";
-
         lines.forEach(processLine);
       }
-
       buffer+=decoder.decode();
-
-      if(buffer.trim()){
-        processLine(buffer);
-      }
+      if(buffer.trim())processLine(buffer);
 
       if(!answer){
-
-        assistantBubble.textContent=
-          "I couldn't generate a response. Please try again.";
-
+        assistantBubble.classList.remove("typing");
+        assistantBubble.textContent="I couldn't generate a response. Please try again.";
         assistantBubble.classList.add("error");
-
       }else{
-
-        history.push({
-          role:"assistant",
-          content:answer
-        });
-
+        history.push({role:"assistant",content:answer});
       }
-
     }catch(error){
-
       console.error("Portfolio AI chat error:",error);
-
-      assistantBubble.textContent=
-        "The assistant is temporarily unavailable. Please try again in a moment.";
-
+      assistantBubble.classList.remove("typing");
+      assistantBubble.textContent="The assistant is temporarily unavailable. Please try again in a moment.";
       assistantBubble.classList.add("error");
-
     }finally{
-
       setBusy(false);
       input.focus();
-
     }
   }
 
   form.addEventListener("submit",e=>{
     e.preventDefault();
     sendMessage(input.value);
+  });
+
+  input.addEventListener("input",()=>{
+    input.style.height="auto";
+    input.style.height=Math.min(input.scrollHeight,116)+"px";
   });
 
   input.addEventListener("keydown",e=>{
@@ -1532,6 +1552,11 @@ $("#yr").textContent=new Date().getFullYear();
     }
   });
 
+  if(suggestions){
+    suggestions.querySelectorAll(".ai-suggestion").forEach(button=>{
+      button.addEventListener("click",()=>sendMessage(button.textContent));
+    });
+  }
 })();
 </script>
 
